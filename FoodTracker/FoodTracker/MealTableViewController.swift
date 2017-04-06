@@ -106,6 +106,18 @@ class MealTableViewController: UITableViewController {
     }
     */
     
+    // MARK: Actions
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
+            let newIndexPath = IndexPath(row: meals.count, section: 0)
+            
+            meals.append(meal)
+            
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+        }
+    }
+    
     // MARK: Private Methods
     
     private func loadSampleMeals() {
@@ -117,11 +129,11 @@ class MealTableViewController: UITableViewController {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let meal2 = Meal(name: "Chicken?????", photo: photo2, rating: 5) else {
+        guard let meal2 = Meal(name: "Chicken.....", photo: photo2, rating: 5) else {
             fatalError("Unable to instantiate meal2")
         }
         
-        guard let meal3 = Meal(name: "Vegetarian??????", photo: photo3, rating: 3) else {
+        guard let meal3 = Meal(name: "Vegetarian.....", photo: photo3, rating: 3) else {
             fatalError("Unable to instantiate meal3")
         }
         
